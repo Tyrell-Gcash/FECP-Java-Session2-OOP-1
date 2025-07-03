@@ -22,10 +22,10 @@ public class Main {
         System.out.printf("\n" + "Enter Account Number: ");
         int accountNumber = scanner.nextInt();
 
-        System.out.printf("\n" + "Enter Holder Name: ");
+        System.out.printf("Enter Holder Name: ");
         String accountName = scanner.next();
 
-        System.out.printf("\n" + "Initial deposit? (yes/no): ");
+        System.out.printf("Initial deposit? (yes/no): ");
         String initialDepositChoice = scanner.next();
 
         if (initialDepositChoice.equalsIgnoreCase("no")){
@@ -78,7 +78,40 @@ public class Main {
         }
     }
 
-    private static void depositToAccount(ArrayList<BankAccount> bankAccounts){
+    private static void depositToAccount(ArrayList<BankAccount> bankAccounts) {
+
+        while (true) {
+            System.out.printf("\n" + "Enter Account Number: ");
+            int accountNumber = scanner.nextInt();
+
+            BankAccount foundAccount = lookForAccount(bankAccounts, accountNumber);
+
+            if (foundAccount != null) {
+
+                while (true) {
+                    System.out.printf("\n" + "Enter deposit amount: ");
+                    double depositAmount = scanner.nextDouble();
+
+                    if (depositAmount < 0) {
+                        continue;
+                    }
+
+                    foundAccount.deposit(depositAmount);
+                    System.out.println("Deposit successful");
+                    break;
+                }
+
+            } else {
+                System.out.println("Invalid Account Number!");
+                continue;
+            }
+            break;
+        }
+
+
+    }
+
+    private static void widthdrawFromAccount(ArrayList<BankAccount> bankAccounts){
 
         while(true){
             System.out.printf("\n" + "Enter Account Number: ");
@@ -89,15 +122,16 @@ public class Main {
             if (foundAccount != null){
 
                 while(true){
-                    System.out.printf("\n" + "Enter deposit amount: ");
-                    double depositAmount = scanner.nextDouble();
+                    System.out.printf("\n" + "Enter widthdraw amount: ");
+                    double widthdrawAmount = scanner.nextDouble();
 
-                    if (depositAmount < 0){
+                    if (widthdrawAmount < 0 || widthdrawAmount > foundAccount.getAccountBalance()){
+                        System.out.println("Invalid Amount!");
                         continue;
                     }
 
-                    foundAccount.deposit(depositAmount);
-                    System.out.println("Deposit successful");
+                    foundAccount.withdraw(widthdrawAmount);
+                    System.out.println("Widthdraw successful");
                     break;
                 }
 
@@ -108,8 +142,6 @@ public class Main {
             }
             break;
         }
-
-
     }
 
     public static void main(String[] args) {
@@ -142,7 +174,7 @@ public class Main {
                     depositToAccount(bankAccounts);
                     break;
                 case 5:
-
+                    widthdrawFromAccount(bankAccounts);
                     break;
                 case 6:
                     System.out.println("Thank you!");
