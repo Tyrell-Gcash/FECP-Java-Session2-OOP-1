@@ -70,8 +70,11 @@ public class Main {
             BankAccount foundAccount = lookForAccount(bankAccounts, accountNumber);
 
             if(foundAccount != null){
-                System.out.printf("Account Balance: %.2f", foundAccount.getAccountBalance());
+                foundAccount.displayInformation();
+                break;
             }
+
+            System.out.println("Invalid Account Number!");
         }
     }
 
