@@ -6,11 +6,6 @@ public class BankAccount {
     private String accountName;
     private double accountBalance = 0;
 
-    public BankAccount(int accountNumber, String accountName){
-        this.accountNumber = accountNumber;
-        this.accountName = accountName;
-    }
-
     public int getAccountNumber() {
         return accountNumber;
     }
