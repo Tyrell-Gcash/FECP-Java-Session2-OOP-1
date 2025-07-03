@@ -180,6 +180,13 @@ public class Main {
                     System.out.println("Thank you!");
                     return;
             }
+            System.out.printf("\n" + "Would you like to return to the main menu? (yes/no): ");
+            String menuChoice = scanner.next();
+
+            if (menuChoice.equalsIgnoreCase("no")){
+                System.out.println("Thank you!");
+                return;
+            }
         }
     }
 }
