@@ -97,7 +97,7 @@ public class Main {
                     }
 
                     foundAccount.deposit(depositAmount);
-                    System.out.println("Deposit successful");
+                    System.out.println("Deposit successful!");
                     break;
                 }
 
@@ -131,7 +131,7 @@ public class Main {
                     }
 
                     foundAccount.withdraw(widthdrawAmount);
-                    System.out.println("Widthdraw successful");
+                    System.out.println("Widthdraw successful!");
                     break;
                 }
 
